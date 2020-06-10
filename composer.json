@@ -1,7 +1,27 @@
 {
+  "name": "askolds/test-task",
+  "type": "library",
+  "description": "This library is a test task",
+  "keywords": [
+    "ddd", "test task"
+  ],
+  "homepage": "https://github.com/askolds/test-task",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Askolds",
+      "homepage": "https://github.com/askolds/test-task",
+      "role": "Developer"
+    }
+  ],
   "require": {
+    "php": "^7.1",
     "aura/sql": "^3.0",
     "psr/http-factory": "^1.0",
     "psr/http-client": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+    }
   }
 }
