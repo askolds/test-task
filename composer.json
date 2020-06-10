@@ -22,6 +22,17 @@
   },
   "autoload": {
     "psr-4": {
+      "Askolds\\Domain\\": "src/Domain",
+      "Askolds\\Application\\": "src/Application",
+      "Askolds\\Infrastructure\\": "src/Infrastructure"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "8.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Askolds\\Tests\\": "tests/"
     }
   }
 }
