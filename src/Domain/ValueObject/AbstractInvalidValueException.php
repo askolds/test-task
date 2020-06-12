@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace Askolds\Domain\ValueObject;
 
@@ -9,6 +9,7 @@ use Throwable;
 abstract class AbstractInvalidValueException extends InvalidArgumentException
 {
 
+    /** @var string */
     private $value;
 
     public function __construct(string $value, int $code = 0, Throwable $previous = null)

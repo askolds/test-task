@@ -12,6 +12,7 @@ class Currency implements ValueObjectInterface
     public const  GBP = 'GBP';
     public const  USD = 'USD';
 
+    /** @var string  */
     private $value;
 
     /**

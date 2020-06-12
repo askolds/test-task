@@ -18,7 +18,8 @@
     "php": "^7.1",
     "aura/sql": "^3.0",
     "psr/http-factory": "^1.0",
-    "psr/http-client": "^1.0"
+    "psr/http-client": "^1.0",
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {

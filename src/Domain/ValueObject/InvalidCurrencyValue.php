@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace Askolds\Domain\ValueObject;
 
@@ -10,6 +10,7 @@ use Throwable;
 class InvalidCurrencyValue extends AbstractInvalidValueException
 {
 
+    /** @var Currency */
     private $currency;
 
     public function __construct(Currency $currency, ?Throwable $previous = null)

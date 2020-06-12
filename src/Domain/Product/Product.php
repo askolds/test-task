@@ -11,6 +11,7 @@ class Product implements ValueObjectInterface
     public const  ECOM = 'ECOM';
     public const  POS = 'POS';
 
+    /** @var string */
     private $value;
 
     /**

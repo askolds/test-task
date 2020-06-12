@@ -41,5 +41,25 @@ class BasicFilterTest extends TestCase
         $this->assertTrue($basicFilter->isLastDayOfMonth());
     }
 
+    public function testCalculatePreviousDates(): void
+    {
+        $from = new DateTime(date('Y') . '-06-22');
+        $to = new DateTime(date('Y') . '-07-10');
+
+        $products = [];
+
+        $basicFilter = new BasicFilter($from, $to, ...$products);
+        $basicFilter->calculatePreviousDates();
+
+
+        $previousFrom = (new DateTime("2020-06-04"))->setTime(0, 0, 0);
+        $previousTo = (new DateTime("2020-06-22"))->setTime(23, 59, 59);
+
+
+        $this->assertEquals($previousFrom, $basicFilter->previousFrom);
+        $this->assertEquals($previousTo, $basicFilter->previousTo);
+
+    }
+
 
 }

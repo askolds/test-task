@@ -15,23 +15,24 @@ class BasicFilter
 
     public const TIME_FORMAT = 'Y-m-d';
 
+    /** @var DateTimeImmutable|false */
     public $from;
+    /** @var DateTimeImmutable|false */
     public $to;
-
+    /** @var DateTimeImmutable|false */
     public $previousFrom;
+    /** @var DateTimeImmutable|false */
     public $previousTo;
-
+    /** @var Product[] */
     public $products;
 
     public function __construct(DateTimeInterface $from, DateTimeInterface $to, Product ...$products)
     {
-
         $this->from = (new DateTimeImmutable($from->format(self::TIME_FORMAT)))->setTime(0, 0, 0);
         $this->to = (new DateTimeImmutable($to->format(self::TIME_FORMAT)))->setTime(23, 59, 59);
         $this->products = $products;
 
         $this->calculatePreviousDates();
-
     }
 
     public function calculatePreviousDates(): void
@@ -39,11 +40,14 @@ class BasicFilter
         if ($this->isSameYear() && $this->isFirstDayOfYear() && $this->isLastDayOfYear()) {
             $this->previousFrom = $this->from->sub(new DateInterval('P1Y'));
             $this->previousTo = $this->to->sub(new DateInterval('P1Y'));
-        }
-
-        if ($this->isSameMonth() && $this->isFirstDayOfMonth() && $this->isLastDayOfMonth()) {
+        } elseif ($this->isSameMonth() && $this->isFirstDayOfMonth() && $this->isLastDayOfMonth()) {
             $this->previousFrom = $this->from->sub(new DateInterval('P1M'));
             $this->previousTo = $this->to->sub(new DateInterval('P1M'));
+        } else {
+            $difference = $this->from->diff($this->to);
+            $daysBetween = $difference->d;
+            $this->previousFrom = $this->from->sub(new DateInterval('P' . $daysBetween . 'D'));
+            $this->previousTo = $this->to->sub(new DateInterval('P' . $daysBetween . 'D'));
         }
     }
 
